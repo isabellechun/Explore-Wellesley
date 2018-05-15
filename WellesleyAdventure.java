@@ -80,6 +80,7 @@ public class WellesleyAdventure extends JFrame
        // catch(FileNotFoundException e){
            // System.out.println("File not found.");
         // }
+        
         JPanel about = new InfoBar("About",info);
         
         

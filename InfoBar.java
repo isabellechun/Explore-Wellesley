@@ -51,6 +51,7 @@ public class InfoBar extends JPanel
     public InfoBar(String title, String info){
         buttonList = new LinkedList<JButton>();
         
+        
         JLabel t = new JLabel(title, SwingConstants.CENTER);
         t.setFont(new Font("Helvetica",Font.PLAIN, 50));
         t.setForeground(Color.WHITE);
