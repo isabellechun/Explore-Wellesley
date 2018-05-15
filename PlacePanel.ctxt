@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PlacePanel
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ PlacePanel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=placePic\ links\ title
+comment1.target=PlacePanel(java.lang.String,\ java.util.LinkedList,\ java.lang.String)
+comment2.params=placePic\ links\ title
+comment2.target=void\ initPlace(java.lang.String,\ java.util.LinkedList,\ java.lang.String)
+comment3.params=
+comment3.target=java.util.LinkedList\ getButtons()
+comment4.params=
+comment4.target=InfoBar\ getInfoBar()
+numComments=5

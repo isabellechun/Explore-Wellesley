@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=InfoBar
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ InfoBar\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=buttons\ title
+comment1.target=InfoBar(java.util.LinkedList,\ java.lang.String)
+comment2.params=buttons\ title
+comment2.target=void\ initInfo(java.util.LinkedList,\ java.lang.String)
+comment3.params=
+comment3.target=java.util.LinkedList\ getButtons()
+numComments=4

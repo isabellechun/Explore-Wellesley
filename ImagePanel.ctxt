@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ImagePanel
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ HomePanel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=imageFile
+comment1.target=ImagePanel(java.lang.String)
+comment2.params=imageFile
+comment2.target=void\ initImagePanel(java.lang.String)
+comment3.params=g
+comment3.target=void\ paintComponent(java.awt.Graphics)
+numComments=4
