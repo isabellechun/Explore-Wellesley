@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.awt.BorderLayout;
 import javax.swing.*;
 import java.util.*;
+import java.io.*;
 
 /**
  * Write a description of class NavBar here.
@@ -58,10 +59,35 @@ public class WellesleyAdventure extends JFrame
         //set up the current location panel
         update();
         
+        //set up the info panel
+       String info = "Choose Explore mode to learn about buildings and fun places on Wellesley’s campus!" +
+       "Click on buildings listed in the legend at the bottom left corner of the map to learn about them."+
+       "You’ll find a fun fact and a list of other places they’re connected to!"+
+       "Choose quiz mode to take a short quiz that takes you through a day of activities at Wellesley!"+
+       "Click on your answer to advance to the next question."+
+       "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care."+
+       "You’ll also get a list of places you visited during your day at Wellesley.";
+       
+       
+       // try{
+            // Scanner scan = new Scanner(new File("about.txt"));
+            // while(scan.hasNextLine()){
+                // System.out.println(scan.nextLine());
+                // //info = info + scan.next();
+            // }
+            // scan.close();
+       // }
+       // catch(FileNotFoundException e){
+           // System.out.println("File not found.");
+        // }
+        JPanel about = new InfoBar("About",info);
+        
+        
         //add elements to the card layout
         content.add(home, "HOME");
         content.add(map, "MAP");
         content.add(currentPlace, "CPLACE");
+        content.add(about, "ABOUT");
         
         //start with the home page
         goHome();
@@ -70,7 +96,7 @@ public class WellesleyAdventure extends JFrame
         nav.getHome().addActionListener(new NavListener());
         nav.getMap().addActionListener(new NavListener());
         nav.getEnter().addActionListener(new NavListener());
-        
+        nav.getAbout().addActionListener(new NavListener());
     }
     
     public void update(){
@@ -82,11 +108,11 @@ public class WellesleyAdventure extends JFrame
             linkedNames.add(p.toString());
         }
         
-        System.out.println(linkedNames);
+        //System.out.println(linkedNames);
         
         //make a PlacePanel
         currentPlace = new PlacePanel(cp.getPhoto(), linkedNames, cp.toString());
-        System.out.println(cp.getPhoto());
+        //System.out.println(cp.getPhoto());
         //add actionlisteners to all the buttons
         addPlaceListeners((PlacePanel)currentPlace);
     }
@@ -115,6 +141,10 @@ public class WellesleyAdventure extends JFrame
         cardLayout.show(content, "CPLACE");
     }
     
+    public void goToAbout(){
+        cardLayout.show(content, "ABOUT");
+    }
+    
     // public void setPlaceListeners(){
         // //get the pannel in content
         // PlacePanel currentPlace = content.
@@ -133,6 +163,9 @@ public class WellesleyAdventure extends JFrame
             }
             else if(e.getSource() == nav.getEnter()){
                 returnToPlace();
+            }
+            else{
+                goToAbout();
             }
         }
     }

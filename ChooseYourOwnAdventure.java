@@ -85,6 +85,7 @@ public class ChooseYourOwnAdventure
         n12 = new LinkedBinaryTree<String> (s7, n7, n8);  
         n13 = new LinkedBinaryTree<String> (s2, n9, n10);
         n14 = new LinkedBinaryTree<String> (s3, n11, n12);
+        
         adventure = new LinkedBinaryTree<String> (s1, n13, n14);
         
         

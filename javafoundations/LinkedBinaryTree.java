@@ -165,6 +165,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T>
 
       return result;
 	}
+	
    public boolean contains (T target) 
  	{
 		try

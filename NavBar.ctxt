@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=javax.swing.JButton\ getMap()
 comment5.params=
 comment5.target=javax.swing.JButton\ getEnter()
-numComments=6
+comment6.params=
+comment6.target=javax.swing.JButton\ getAbout()
+numComments=7

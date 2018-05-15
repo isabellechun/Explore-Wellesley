@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Question
+comment0.text=\r\n\ Question\ class\ creates\ Question\ objects\ that\ have\ a\ question\ and\ a\ Place\ \r\n\ associated\ with\ them\ \r\n\r\n\ @author\ Jannitta\ Yao\r\n\ @version\ 5/14/18\r\n
+comment1.params=q\ a1\ a2\ p1\ p2
+comment1.target=Question(java.lang.String,\ java.lang.String,\ java.lang.String,\ Place,\ Place)
+comment1.text=\r\n\ Constructor\ method\ \r\n
+comment2.params=
+comment2.target=java.lang.String\ getQuestion()
+comment2.text=\r\n\ getQuestion\ returns\ the\ question\ associated\ with\ the\ Question\ class\r\n\ \r\n\ @return\ String\ question\r\n
+comment3.params=
+comment3.target=Place\ getLeftPlace()
+comment4.params=
+comment4.target=Place\ getRightPlace()
+comment5.params=
+comment5.target=java.lang.String\ getRightAnswer()
+comment6.params=
+comment6.target=java.lang.String\ getLeftAnswer()
+numComments=7

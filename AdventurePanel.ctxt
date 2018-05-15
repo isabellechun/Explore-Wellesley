@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=AdventurePanel
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ AdventurePanel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=s\ c
+comment1.target=AdventurePanel(java.lang.String,\ ChooseYourOwnAdventure)
+numComments=2

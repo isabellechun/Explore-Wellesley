@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=void\ goToMap()
 comment8.params=
 comment8.target=void\ returnToPlace()
-numComments=9
+comment9.params=
+comment9.target=void\ goToAbout()
+numComments=10

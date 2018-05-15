@@ -13,6 +13,7 @@ public class NavBar extends JPanel
     JButton home;
     JButton map;
     JButton enter;
+    JButton about;
     WellesleyAdventure w;
     
     public NavBar(){
@@ -24,15 +25,16 @@ public class NavBar extends JPanel
         home = new NavButton("Home");
         map = new NavButton("Map");
         enter = new NavButton("Return");
+        about = new NavButton("About");
         
         //add the buttons
-        add(home);add(map);add(enter);
+        add(home);add(map);add(enter);add(about);
         
         //add action listeners
         //home.addActionListener(new NavListener());
         
         //set the layout
-        setLayout(new GridLayout(3,1));
+        setLayout(new GridLayout(4,1));
         setPreferredSize(new Dimension(500,250));
         setVisible(true);
         setBackground(new Color(19,63,132));
@@ -48,5 +50,9 @@ public class NavBar extends JPanel
     
     public JButton getEnter(){
         return enter;
+    }
+    
+    public JButton getAbout(){
+        return about;
     }
 }
