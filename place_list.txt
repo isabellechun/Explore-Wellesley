@@ -1,4 +1,4 @@
-Academic Quad;In 1889, Wellesley opened the Farnsworth Art Building and became the first college in the country to offer a course in art history.;Academic_Quad.jpg
+﻿Academic Quad;In 1889, Wellesley opened the Farnsworth Art Building and became the first college in the country to offer a course in art history.;Academic_Quad.jpg
 Alumnae Hall;Many cultural events and performances are hosted by student organizations here.;Alumnae_Hall.jpg
 Arboretum;There is a hidden labyrinth- see if you can find it!;Arboretum.jpg
 Clapp;You can find portraits of past Wellesley presidents here!;Clapp.jpg

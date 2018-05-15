@@ -35,7 +35,7 @@ public class NavBar extends JPanel
         setLayout(new GridLayout(3,1));
         setPreferredSize(new Dimension(500,250));
         setVisible(true);
-        setBackground(new Color(100,100,100));
+        setBackground(new Color(19,63,132));
     }
     
     public JButton getHome(){

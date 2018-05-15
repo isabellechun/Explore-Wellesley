@@ -25,6 +25,7 @@ public class ImagePanel extends JPanel
             System.out.println("Image not found");
         }
         
+        setBackground(new Color(19,63,132));
         setPreferredSize(new Dimension(1500,1000));
     }
     

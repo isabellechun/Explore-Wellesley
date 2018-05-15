@@ -12,6 +12,7 @@ public class WellesleyMap
 {
     private AdjListsGraphPlus<Place> map;
     private Place currentPlace;
+    private LinkedList<Place> placeList;
 
     /**
      * Constructor for objects of class Map, adds all vertices and arcs by scanning 2 files.
@@ -22,6 +23,7 @@ public class WellesleyMap
      */
     public WellesleyMap()
     {
+        placeList = new LinkedList<Place>();
         map = new AdjListsGraphPlus<Place>();
         try { //add vertices
             Scanner scan = new Scanner (new File("place_list.txt"));
@@ -31,6 +33,8 @@ public class WellesleyMap
 
                 Place newPlace = new Place(placeLineSplit[0], placeLineSplit[1], placeLineSplit[2]);
                 map.addVertex(newPlace);
+                //Silvia
+                placeList.add(newPlace);
             }
             scan.close();
             
@@ -81,6 +85,10 @@ public class WellesleyMap
     //by Silvia
     public Place getCurrentPlace(){
         return currentPlace;
+    }
+    
+    public LinkedList<Place> getPlaces(){
+        return placeList;
     }
     
     /**

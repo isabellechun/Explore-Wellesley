@@ -19,6 +19,6 @@ public class NavButton extends JButton
         //style the button
         setForeground(Color.WHITE);
         setFont(new Font("Helvetica",Font.PLAIN, 50));
-        setBackground(new Color(216, 207, 195));
+        setBackground(new Color(19,63,132));
     }
 }

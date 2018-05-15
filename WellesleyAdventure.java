@@ -51,6 +51,9 @@ public class WellesleyAdventure extends JFrame
         
         //set up the map panel
         JPanel map = new MapPanel();
+        for(JButton b: ((MapPanel)map).getLinks()){
+            b.addActionListener(new PlaceListener());
+        }
         
         //set up the current location panel
         update();
