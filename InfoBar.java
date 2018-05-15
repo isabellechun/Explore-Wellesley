@@ -5,29 +5,53 @@ import java.util.*;
  * Write a description of class InfoBar here.
  *
  * @author (your name)
- * @version (a version number or a date)
+ * @ 5-15-18
  */
 public class InfoBar extends JPanel
 {
     LinkedList<JButton> buttonList;
     
+    /**
+     * InfoBar constructor
+     * @param buttons is a list of every button that an InfoBar will contain
+     * @param title is the title of this InfoBar panel
+     */
     public InfoBar(LinkedList<String> buttons, String title){
         buttonList = new LinkedList<JButton>();
         initInfo(buttons, title);
     }
     
+    /**
+     * initInfo is a helper method for InfoBar constructor.
+     * updates the contents of an InfoBar panel.
+     * 
+     * @params buttons is a list of 
+     * @params title is the main header of this panel.
+     */
     private void initInfo(LinkedList<String> buttons, String title){
         
+<<<<<<< HEAD
         
         //add elements
         JLabel t = new JLabel(title, SwingConstants.CENTER);
         t.setFont(new Font("Helvetica",Font.PLAIN, 50));
+=======
+        //add title
+        JLabel t = new JLabel(title, SwingConstants.CENTER); 
+        t.setFont(new Font("Helvetica",Font.PLAIN, 35));
+>>>>>>> 3c8a4da04797be9ee1d61a58be780bcf86460566
         t.setForeground(Color.WHITE);
         add(t);
         
-        JPanel buttonsContainer = new JPanel();
+        JLabel connectionsLabel = new JLabel("Connections:", SwingConstants.CENTER);
+        connectionsLabel.setFont(new Font("Helvetica",Font.PLAIN, 25));
+        connectionsLabel.setForeground(Color.WHITE);
+        add(connectionsLabel);
+        
+        JPanel buttonsContainer = new JPanel(); //initialize new sub-panel for each place button
         buttonsContainer.setBackground(new java.awt.Color(19,63,132));
-        for(String s: buttons){
+        //add each button from LinkedList to buttonsContainer sub-panel
+        for(String s: buttons){ 
             JButton b = new JButton(s);
             
             //style buttons
