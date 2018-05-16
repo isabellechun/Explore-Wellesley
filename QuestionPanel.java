@@ -16,9 +16,9 @@ public class QuestionPanel extends JPanel
     String rQ;
     String lQ;
     ChooseYourOwnAdventure adventure;
-    public QuestionPanel(Question q){
+    public QuestionPanel(Question q, ChooseYourOwnAdventure a){
         //create a ChooseYourOwnAdventure Instance to get info from
-        adventure = new ChooseYourOwnAdventure();
+        adventure = a;
         
         //create a LinkedList of the button names
         buttons = new LinkedList<String>();
@@ -32,7 +32,7 @@ public class QuestionPanel extends JPanel
         
         //make an InfoBar with this question
         if(q.isLeaf()){
-            InfoBar contents = new InfoBar("Analysis", q.getQuestion());
+            InfoBar contents = new InfoBar(adventure.getQueue(), q.getQuestion(),"Analysis");
             add(contents);
         }
         else{

@@ -25,10 +25,24 @@ public class WellesleyAdventure extends JFrame
     JPanel home;
     JPanel about;
     
+    /**
+     * Constructor for the WellesleyAdventure class; sets up the 
+     * UI for the whole program
+     * 
+     * @params none
+     */
     public WellesleyAdventure(){
         initUI();
     }
-
+    
+    /**
+     * Private class which sets up the elements of the UI and adds
+     * action listeners connecting buttons to the classes which
+     * define their behaviors
+     * 
+     * @params none
+     * @return void
+     */
     private void initUI() {
         //set up the underlying graph
         mapGraph = new WellesleyMap();
@@ -65,17 +79,17 @@ public class WellesleyAdventure extends JFrame
         update();
         
         //set up the info panel
-       String info = "Choose Explore mode to learn about buildings and fun places on Wellesley’s campus!" +
-       "Click on buildings listed in the legend at the bottom left corner of the map to learn about them."+
-       "You’ll find a fun fact and a list of other places they’re connected to!"+
-       "Choose quiz mode to take a short quiz that takes you through a day of activities at Wellesley!"+
-       "Click on your answer to advance to the next question."+
-       "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care."+
-       "You’ll also get a list of places you visited during your day at Wellesley.";
+       String info = "Choose Explore mode to learn about buildings and fun places on Wellesley’s campus!<br/>" +
+       "Click on buildings listed in the legend at the bottom left corner of the map to learn about them.<br/>"+
+       "You’ll find a fun fact and a list of other places they’re connected to!<br/><br/>"+
+       "Choose quiz mode to take a short quiz that takes you through a day of activities at Wellesley!<br/>"+
+       "Click on your answer to advance to the next question.<br/>"+
+       "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care.<br/>"
+       + "You’ll also get a list of places you visited during your day at Wellesley.";
        
        //set up the choose your own adventure panel
        adventure = new ChooseYourOwnAdventure();
-       quiz = new QuestionPanel(adventure.getCurrentQuestion());
+       quiz = new QuestionPanel(adventure.getCurrentQuestion(), adventure);
        for(JButton b: quiz.getButtons()){
            b.addActionListener(new QuizListener());
         }
@@ -112,6 +126,15 @@ public class WellesleyAdventure extends JFrame
         nav.getAbout().addActionListener(new NavListener());
     }
     
+    /**
+     * Updates the current location displayed in explore mode by 
+     * checking the current location on the underlying graph of
+     * place objects and making a new placepanel using the information
+     * it contains.
+     * 
+     * @params none
+     * @return void
+     */
     public void update(){
         Place cp = mapGraph.getCurrentPlace();
         
@@ -130,16 +153,36 @@ public class WellesleyAdventure extends JFrame
         addPlaceListeners((PlacePanel)currentPlace);
     }
     
+    /**
+     * Helper method to add listeners to the buttons in a PlacePanel
+     * 
+     * @params PlacePanel p a PlacePanel to which to add listeners
+     * @return void
+     */
     public void addPlaceListeners(PlacePanel p){
         for(JButton j: ((PlacePanel)p).getButtons()){
             j.addActionListener(new PlaceListener());
         }
     }
     
+    /**
+     * Helper method which returns the navBar instance used in the GUI
+     * 
+     * @params none
+     * @return NavBar the navigation bar used
+     */
     public NavBar getNav(){
         return nav;
     }
     
+    /**
+     * Sets the contents of the right side of the screen to the home
+     * panel; called during setup and in response to the home 
+     * button in the navbar
+     * 
+     * @params none
+     * @return void
+     */
     public void goHome(){
         content.removeAll();
         content.add(home, "HOME");
@@ -148,6 +191,13 @@ public class WellesleyAdventure extends JFrame
         content.revalidate();
     }
     
+    /**
+     * Sets the contents of the right side of the screen to the map
+     * panel, called in response to the map button in the navbar
+     * 
+     * @params none
+     * @return void
+     */
     public void goToMap(){
         content.removeAll();
         content.add(map, "MAP");
@@ -156,6 +206,13 @@ public class WellesleyAdventure extends JFrame
         content.revalidate();
     }
     
+    /**
+     * Sets the contents of the right side of the screen to the current
+     * place on the map
+     * 
+     * @params none
+     * @return void
+     */
     public void returnToPlace(){
         content.removeAll();
         content.add(currentPlace, "CPLACE");
@@ -164,6 +221,13 @@ public class WellesleyAdventure extends JFrame
         content.revalidate();
     }
     
+    /**
+     * Sets the contents of the right side of the screen to the about
+     * panel with instructions for running the program
+     * 
+     * @params none
+     * @return void
+     */
     public void goToAbout(){
         content.removeAll();
         content.add(about, "ABOUT");
@@ -172,21 +236,45 @@ public class WellesleyAdventure extends JFrame
         content.revalidate();
     }
     
+    /**
+     * Sets the contents of the right side fo the screen to the 
+     * current QuestionPanel, allowing the user to go through a
+     * series of decisions in a day at Wellesley
+     * 
+     * @params none
+     * @return void
+     */
     public void goToQuiz(){
         content.removeAll();
-        quiz = new QuestionPanel(adventure.getCurrentQuestion());
+        quiz = new QuestionPanel(adventure.getCurrentQuestion(),adventure);
+        
         if(!adventure.getCurrentQuestion().isLeaf()){
             for(JButton b: quiz.getButtons()){
                b.addActionListener(new QuizListener());
             }
-    }
+        }
         content.add(quiz);
         cardLayout.show(content, "QUIZ");
         content.repaint();
         content.revalidate();
     }
-        
+    
+    /**
+     * Class representing an action listener which responds to input
+     * from the user via the navigation bar; calls the methods which
+     * set the contents of the right side of the screen
+     */
     public class NavListener implements ActionListener{
+        /**
+         * Called when actionEvents are generated by the buttons
+         * in the navigation bar; sets the contents of the 
+         * cardLayout containing the elements of the screenś right
+         * side
+         * 
+         * @params ActionEvent e an ActionEvent generated by user interaction
+         * with a button
+         * @return void
+         */
         public void actionPerformed(ActionEvent e){
             returnToPlace();
             //handle actionsevents from the nav bar
@@ -205,7 +293,23 @@ public class WellesleyAdventure extends JFrame
         }
     }
     
+    /**
+     * Class representing an action listener which responds to
+     * user input from buttons which lead to places as well as 
+     * to the two buttons leading to explore mode and to adventure
+     * mode in the PLacePanel used in the home panel
+     */
     public class PlaceListener implements ActionListener{
+        /**
+         *Called when actionEvents are generated by the buttons
+         *in the  placePanel and mapPanel class; sets the contents of the 
+         *cardLayout containing the elements of the screenś right
+         *side. Goes to places, or enters explore or adventure mode
+         *
+         *@params actionEvent e the actonEvent triggerred by interaction 
+         *with a button
+         *@return void
+         */
         public void actionPerformed(ActionEvent e){
             String action = e.getActionCommand();
             if(action=="Explore"){
@@ -223,8 +327,20 @@ public class WellesleyAdventure extends JFrame
             }
         }
     }
-    
+
+    /**
+     * Class representing a listener which responds to input from
+     * Quiz questions and traverses the binary tree of choices in addition
+     * updating the current QuizPanel accordingly
+     */
     public class QuizListener implements ActionListener{
+        /**
+         * Updates the userś position in the binary tree of choices
+         * and updates the GUI to correspond with this position
+         * 
+         * @params ActionAvent e the action event triggered by a button
+         * @return void
+         */
         public void actionPerformed(ActionEvent e){
             if(e.getActionCommand() == "l"){
                 adventure.answerQuestion("l");
@@ -237,3 +353,4 @@ public class WellesleyAdventure extends JFrame
         }
     }
 }
+

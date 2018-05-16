@@ -5,7 +5,7 @@ import javafoundations.*;
  * creae their own unique ~Wellesley experience~.
  *
  * @author Jannitta Yao
- * @version 5/13/18
+ * @version 5/16/18
  */
 public class ChooseYourOwnAdventure
 {
@@ -13,10 +13,14 @@ public class ChooseYourOwnAdventure
     LinkedBinaryTree<Question> adventure; //initialize instance variables 
     Question currentQ;
     LinkedBinaryTree<Question> currentTree;
+    ArrayQueue<Place> places; 
+    
     /**
      * Constructor method; sets up adventure database
      */
     public ChooseYourOwnAdventure(){
+        places = new ArrayQueue<Place>();
+        
         WellesleyMap map = new WellesleyMap();
         Question q1 = new Question("It's 8 am and you just woke up. How do you start your day?",
                                     "Go get breakfast and then go to class in SCI",
@@ -162,30 +166,105 @@ public class ChooseYourOwnAdventure
         currentTree = adventure;
     }
     
+    /**
+     * addPlace adds a Place to the ArrayQueue of Places
+     * 
+     * @param Place p Place to be added to Places 
+     */
+    public void addPlace(Place p){
+        places.enqueue(p);
+    }
+    
+    /**
+     * containsPlace is a helper method that checks to see if a Place is in 
+     * the ArrayQueue of Places 
+     * 
+     * @return boolean of whether Place is in Array of Places 
+     */
+    public boolean containsPlace(Place pl){
+        ArrayQueue<Place> temp = new ArrayQueue<Place>();
+        boolean contains = false;
+        while (!places.isEmpty()){
+            Place i = places.dequeue();
+            if (i.equals(pl)) {
+                temp.enqueue(i);
+                contains = true;
+                
+            }
+            else
+                temp.enqueue(i);
+        }
+        while (!temp.isEmpty()){
+            places.enqueue(temp.dequeue());
+        }
+        return contains;
+    }
+    
+    /**
+     * getQueue() returns the ArrayQueue of Places 
+     * 
+     * @return ArrayQueue of Places
+     */
+    public ArrayQueue<Place> getQueue(){
+        return places;
+    }
+    
     //by Silvia
+    /**
+     * getCurrentQuestion() returns the current Question 
+     * 
+     * @return Question the currentQuestion asked
+     */
     public Question getCurrentQuestion(){
         return currentQ;
     }
     
     //by Silvia
+    /**
+     * Connects the GUI to the BinaryTree and allows the user to play 
+     * the Adventure mode of the WellesleyGUI
+     */
     public void answerQuestion(String dir){
         if(dir == "l"){
-            System.out.println(currentTree.getLeft().getRootElement());
+            //System.out.println(currentTree.getLeft().getRootElement());
             currentQ = currentTree.getLeft().getRootElement();
             currentTree = currentTree.getLeft();
-            //System.out.println(currentTree);
+            if(!currentQ.isLeaf()){
+                places.enqueue(currentQ.getLeftPlace());
+                System.out.println("Queue: " + places);
+                System.out.println(currentQ.getLeftPlace());
+            }
         }
         else if(dir == "r"){
-            System.out.println(currentTree.getRight().getRootElement());
+            //System.out.println(currentTree.getRight().getRootElement());
             currentQ = currentTree.getRight().getRootElement();
             currentTree = currentTree.getRight();
+            if(!currentQ.isLeaf()){
+                places.enqueue(currentQ.getRightPlace());
+                System.out.println("Queue: " + places);
+                System.out.println(currentQ.getRightPlace());
+            }
         }
+        
     }
     
     /**
      * Main method; tests methods 
      */
     public static void main (String[] args){
+        //Testing for addPlace and containsPlace
+        ChooseYourOwnAdventure test = new ChooseYourOwnAdventure();
+        WellesleyMap map = new WellesleyMap();
+        ArrayQueue<Place> q = test.getQueue();
+        test.addPlace(map.getVertex("Clapp"));
+        test.addPlace(map.getVertex("Science Center"));
+        test.addPlace(map.getVertex("Lake Waban"));
         
+        System.out.println(q);
+        System.out.println("TESTING containsPlace() method\nIs SCI in the "+
+                            "Queue of Places?\nExpected: true Actual: " +
+                            test.containsPlace(map.getVertex("Science Center")));
+        
+        System.out.println(test.getQueue());
     }
 }

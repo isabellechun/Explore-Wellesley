@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
+import javafoundations.*;
 /**
  * Write a description of class InfoBar here.
  *
@@ -86,6 +87,57 @@ public class InfoBar extends JPanel
         add(i);
         
         setLayout(new GridLayout(2,1));
+        setPreferredSize(new Dimension(1000, 500));
+        setBackground(new java.awt.Color(19,63,132));
+    }
+    
+    public InfoBar(ArrayQueue<Place> queue, String info, String title){
+        buttonList = new LinkedList<JButton>();
+        
+        JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(new Font("Helvetica",Font.PLAIN, 50));
+        titleLabel.setPreferredSize(new Dimension(1000, 500));
+        add(titleLabel);
+        
+        //container for analysis
+        JPanel infoContainer = new JPanel();
+        add(infoContainer);
+        
+        JPanel placeContainer = new JPanel();
+        placeContainer.setLayout(new GridLayout(0,1));
+        System.out.println(queue);
+        ArrayQueue<Place> placeStore = new ArrayQueue<Place>();
+        while(!queue.isEmpty()){
+            Place p = queue.dequeue();
+            System.out.println(p);
+            JLabel pLabel = new JLabel(p.toString(), SwingConstants.CENTER);
+            pLabel.setForeground(Color.WHITE);
+            pLabel.setFont(new Font("Helvetica", Font.PLAIN, 25));
+            placeContainer.add(pLabel);
+            placeStore.enqueue(p);
+        }
+        
+        while(!placeStore.isEmpty()){
+            queue.enqueue(placeStore.dequeue());
+        }
+        infoContainer.add(placeContainer);
+        
+        //add info text
+        JTextArea i = new JTextArea(info);
+        i.setEditable(false);
+        i.setFont(new Font("Helvetica",Font.PLAIN, 25));
+        i.setForeground(Color.WHITE);
+        i.setBackground(new Color(19,63,132));
+        i.setLineWrap(true);
+        i.setWrapStyleWord(true);
+        i.setPreferredSize(new Dimension(500, 500));
+        infoContainer.add(i);
+        
+        //set up appearance
+        placeContainer.setBackground(new java.awt.Color(19,63,132));
+        infoContainer.setLayout(new GridLayout(1,2));
+        infoContainer.setBackground(new java.awt.Color(19,63,132));
         setPreferredSize(new Dimension(1000, 500));
         setBackground(new java.awt.Color(19,63,132));
     }

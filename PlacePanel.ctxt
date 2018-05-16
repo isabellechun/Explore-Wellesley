@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=PlacePanel
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ PlacePanel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ representing\ a\ panel\ in\ the\ GUI\ with\ a\ photograph\ of\ a\ place\ and\ the\ \r\n\ vertices\ it\ connects\ to.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=placePic\ links\ title
 comment1.target=PlacePanel(java.lang.String,\ java.util.LinkedList,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ the\ PlacePanel\ which\ takes\ a\ String\ with\ the\ name\r\n
 comment2.params=placePic\ links\ title
 comment2.target=void\ initPlace(java.lang.String,\ java.util.LinkedList,\ java.lang.String)
+comment2.text=\r\n\ Helper\ method\ to\ initialize\ the\ PlacePanel\ with\ an\ ImagePanel\r\n
 comment3.params=
 comment3.target=java.util.LinkedList\ getButtons()
 comment4.params=
