@@ -105,6 +105,13 @@ public class InfoBar extends JPanel
         add(infoContainer);
         
         JPanel placeContainer = new JPanel();
+        
+        //add a label to the list of places visited
+        JLabel places = new JLabel("Places Visited", SwingConstants.CENTER);
+        places.setForeground(Color.WHITE);
+        places.setFont(new Font("Helvetica", Font.BOLD, 25));
+        placeContainer.add(places);
+        
         placeContainer.setLayout(new GridLayout(0,1));
         System.out.println(queue);
         ArrayQueue<Place> placeStore = new ArrayQueue<Place>();

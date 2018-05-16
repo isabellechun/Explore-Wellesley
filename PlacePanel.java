@@ -16,6 +16,8 @@ public class PlacePanel extends JPanel
     
     /**
      * Constructor for the PlacePanel which takes a String with the name
+     * 
+     * @params
      */
     public PlacePanel(String placePic, LinkedList<String> links, String title){
         initPlace(placePic, links, title);

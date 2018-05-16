@@ -105,25 +105,25 @@ public class ChooseYourOwnAdventure
                                     "Go to the roof of SCI to watch the sunset",
                                     map.getVertex("Clapp"),
                                     map.getVertex("Science Center"));   
-        Question l1 = new Question("The day is over! ANALYSIS You spent your day on" 
-                                    + "75% productive classwork 25% self-care", 
+        Question l1 = new Question("The day is over! You spent your day on " 
+                                    + "75% productive classwork & 25% self-care", 
                                      "", "", map.getVertex(""), map.getVertex(""));
-        Question l2 = new Question("The day is over! ANALYSIS You spent your day on" 
-                                    + "50% productive classwork 25% activities with friends 25% self-care", 
+        Question l2 = new Question("The day is over! You spent your day on " 
+                                    + "50% productive classwork & 25% activities with friends & 25% self-care", 
                                      "", "", map.getVertex(""), map.getVertex(""));                            
-        Question l3 = new Question("The day is over! ANALYSIS You spent your day on" 
-                                    + "25% productive classwork 25% activities with friends 50% self-care", 
+        Question l3 = new Question("The day is over! You spent your day on " 
+                                    + "25% productive classwork & 25% activities with friends & 50% self-care", 
                                      "", "", map.getVertex(""), map.getVertex(""));
-        Question l4 = new Question("The day is over! ANALYSIS You spent your day on" 
-                                    + "50% productive classwork 50% self-care", 
+        Question l4 = new Question("The day is over! You spent your day on " 
+                                    + "50% productive classwork & 50% self-care", 
                                      "", "", map.getVertex(""), map.getVertex("")); 
-        Question l5 = new Question("The day is over! ANALYSIS You spent your day on" 
+        Question l5 = new Question("The day is over! You spent your day on " 
                                     + "100% productive classwork", 
                                      "", "", map.getVertex(""), map.getVertex(""));   
-        Question l6 = new Question("The day is over! ANALYSIS You spent your day on" 
-                                    + "25% productive classwork 75% self-care", 
+        Question l6 = new Question("The day is over! You spent your day on " 
+                                    + "25% productive classwork & 75% self-care", 
                                      "", "", map.getVertex(""), map.getVertex(""));  
-        Question l7 = new Question("The day is over! ANALYSIS You spent your day on" 
+        Question l7 = new Question("The day is over! You spent your day on " 
                                     + "100% self-care", 
                                      "", "", map.getVertex(""), map.getVertex(""));                             
         
