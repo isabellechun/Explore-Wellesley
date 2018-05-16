@@ -19,6 +19,11 @@ public class WellesleyAdventure extends JFrame
     JPanel currentQuestion;
     NavBar nav;
     WellesleyMap mapGraph;
+    ChooseYourOwnAdventure adventure;
+    QuestionPanel quiz;
+    JPanel map;
+    JPanel home;
+    JPanel about;
     
     public WellesleyAdventure(){
         initUI();
@@ -47,11 +52,11 @@ public class WellesleyAdventure extends JFrame
         
         //set up the home panel
         LinkedList<String> links = new LinkedList<String>(Arrays.asList("Explore", "Adventure"));
-        JPanel home = new PlacePanel("Photographs/home.jpg", links, "");
+        home = new PlacePanel("Photographs/home.jpg", links, "");
         addPlaceListeners((PlacePanel)home);
         
         //set up the map panel
-        JPanel map = new MapPanel();
+        map = new MapPanel();
         for(JButton b: ((MapPanel)map).getLinks()){
             b.addActionListener(new PlaceListener());
         }
@@ -68,6 +73,12 @@ public class WellesleyAdventure extends JFrame
        "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care."+
        "You’ll also get a list of places you visited during your day at Wellesley.";
        
+       //set up the choose your own adventure panel
+       adventure = new ChooseYourOwnAdventure();
+       quiz = new QuestionPanel(adventure.getCurrentQuestion());
+       for(JButton b: quiz.getButtons()){
+           b.addActionListener(new QuizListener());
+        }
        
        // try{
             // Scanner scan = new Scanner(new File("about.txt"));
@@ -81,7 +92,7 @@ public class WellesleyAdventure extends JFrame
            // System.out.println("File not found.");
         // }
         
-        JPanel about = new InfoBar("About",info);
+       about = new InfoBar("About",info);
         
         
         //add elements to the card layout
@@ -89,6 +100,7 @@ public class WellesleyAdventure extends JFrame
         content.add(map, "MAP");
         content.add(currentPlace, "CPLACE");
         content.add(about, "ABOUT");
+        content.add(quiz, "QUIZ");
         
         //start with the home page
         goHome();
@@ -122,7 +134,6 @@ public class WellesleyAdventure extends JFrame
         for(JButton j: ((PlacePanel)p).getButtons()){
             j.addActionListener(new PlaceListener());
         }
-       
     }
     
     public NavBar getNav(){
@@ -130,27 +141,50 @@ public class WellesleyAdventure extends JFrame
     }
     
     public void goHome(){
+        content.removeAll();
+        content.add(home, "HOME");
         cardLayout.show(content, "HOME");
+        content.repaint();
+        content.revalidate();
     }
     
     public void goToMap(){
+        content.removeAll();
+        content.add(map, "MAP");
         cardLayout.show(content, "MAP");
+        content.repaint();
+        content.revalidate();
     }
     
     public void returnToPlace(){
+        content.removeAll();
         content.add(currentPlace, "CPLACE");
         cardLayout.show(content, "CPLACE");
+        content.repaint();
+        content.revalidate();
     }
     
     public void goToAbout(){
+        content.removeAll();
+        content.add(about, "ABOUT");
         cardLayout.show(content, "ABOUT");
+        content.repaint();
+        content.revalidate();
     }
     
-    // public void setPlaceListeners(){
-        // //get the pannel in content
-        // PlacePanel currentPlace = content.
-        // //for each link in it, add a listener
-    // }
+    public void goToQuiz(){
+        content.removeAll();
+        quiz = new QuestionPanel(adventure.getCurrentQuestion());
+        if(!adventure.getCurrentQuestion().isLeaf()){
+            for(JButton b: quiz.getButtons()){
+               b.addActionListener(new QuizListener());
+            }
+    }
+        content.add(quiz);
+        cardLayout.show(content, "QUIZ");
+        content.repaint();
+        content.revalidate();
+    }
         
     public class NavListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
@@ -178,14 +212,27 @@ public class WellesleyAdventure extends JFrame
                    update();
                    returnToPlace();
                 } 
-            // else if(action=="Adventure"){
-                
-            // }
+            else if(action=="Adventure"){
+                    goToQuiz();
+            }
             else{
                 mapGraph.setCurrentPlace(action);
                 // System.out.println(mapGraph.getCurrentPlace());
                 update();
                 returnToPlace();
+            }
+        }
+    }
+    
+    public class QuizListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            if(e.getActionCommand() == "l"){
+                adventure.answerQuestion("l");
+                goToQuiz();
+            }
+            else if(e.getActionCommand() == "r"){
+                adventure.answerQuestion("r");
+                goToQuiz();
             }
         }
     }

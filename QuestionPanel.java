@@ -7,18 +7,45 @@ import java.awt.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class QuestionPanel
+public class QuestionPanel extends JPanel
 {
     LinkedList<String> buttons;
+    LinkedList<JButton> JButtons;
     String lAnswer;
     String rAnswer;
     String rQ;
     String lQ;
+    ChooseYourOwnAdventure adventure;
     public QuestionPanel(Question q){
+        //create a ChooseYourOwnAdventure Instance to get info from
+        adventure = new ChooseYourOwnAdventure();
+        
+        //create a LinkedList of the button names
         buttons = new LinkedList<String>();
         buttons.add(q.getLeftAnswer());
         buttons.add(q.getRightAnswer());
         
-        //InfoBar contents = new InfoBar()
+        //access the place associated with this question
+        
+        //add the picture associated with this questionś location
+        
+        
+        //make an InfoBar with this question
+        if(q.isLeaf()){
+            InfoBar contents = new InfoBar("Analysis", q.getQuestion());
+            add(contents);
+        }
+        else{
+            InfoBar contents = new InfoBar(buttons, q.getQuestion());
+            contents.getButtons().get(0).setActionCommand("l");
+            contents.getButtons().get(1).setActionCommand("r");
+            JButtons = contents.getButtons();
+            add(contents);
+       }
+       setLayout(new GridLayout(1,1));
+    }
+    
+    public LinkedList<JButton> getButtons(){
+        return JButtons;
     }
 }

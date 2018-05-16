@@ -29,24 +29,17 @@ public class InfoBar extends JPanel
      * @params title is the main header of this panel.
      */
     private void initInfo(LinkedList<String> buttons, String title){
-        
-<<<<<<< HEAD
-        
-        //add elements
-        JLabel t = new JLabel(title, SwingConstants.CENTER);
-        t.setFont(new Font("Helvetica",Font.PLAIN, 50));
-=======
+
         //add title
         JLabel t = new JLabel(title, SwingConstants.CENTER); 
         t.setFont(new Font("Helvetica",Font.PLAIN, 35));
->>>>>>> 3c8a4da04797be9ee1d61a58be780bcf86460566
         t.setForeground(Color.WHITE);
         add(t);
         
-        JLabel connectionsLabel = new JLabel("Connections:", SwingConstants.CENTER);
-        connectionsLabel.setFont(new Font("Helvetica",Font.PLAIN, 25));
-        connectionsLabel.setForeground(Color.WHITE);
-        add(connectionsLabel);
+        // JLabel connectionsLabel = new JLabel("Connections:", SwingConstants.CENTER);
+        // connectionsLabel.setFont(new Font("Helvetica",Font.PLAIN, 25));
+        // connectionsLabel.setForeground(Color.WHITE);
+        // add(connectionsLabel);
         
         JPanel buttonsContainer = new JPanel(); //initialize new sub-panel for each place button
         buttonsContainer.setBackground(new java.awt.Color(19,63,132));
@@ -88,12 +81,12 @@ public class InfoBar extends JPanel
         i.setBackground(new Color(19,63,132));
         i.setLineWrap(true);
         i.setWrapStyleWord(true);
-        i.setPreferredSize(new Dimension(500, 500));
+        i.setPreferredSize(new Dimension(1000, 500));
 
         add(i);
         
         setLayout(new GridLayout(2,1));
-        setPreferredSize(new Dimension(150, 250));
+        setPreferredSize(new Dimension(1000, 500));
         setBackground(new java.awt.Color(19,63,132));
     }
     

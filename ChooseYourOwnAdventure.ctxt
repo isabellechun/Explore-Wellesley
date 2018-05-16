@@ -1,7 +1,14 @@
 #BlueJ class context
 comment0.target=ChooseYourOwnAdventure
-comment0.text=\r\n\ ChooseYourOwnAdventure\ creates\ a\ binary\ tree\ that\ allows\ users\ to\ \r\n\ creae\ their\ own\ unique\ ~Wellesley\ experience~.\r\n\r\n\ @author\ Jannitta\ Yao,\ Isabelle\ Chun,\ Silvia\ Zeamer\r\n\ @version\ 5/13/18\r\n
+comment0.text=\r\n\ ChooseYourOwnAdventure\ creates\ a\ binary\ tree\ that\ allows\ users\ to\ \r\n\ creae\ their\ own\ unique\ ~Wellesley\ experience~.\r\n\r\n\ @author\ Jannitta\ Yao\r\n\ @version\ 5/13/18\r\n
 comment1.params=
 comment1.target=ChooseYourOwnAdventure()
 comment1.text=\r\n\ Constructor\ method;\ sets\ up\ adventure\ database\r\n
-numComments=2
+comment2.params=
+comment2.target=Question\ getCurrentQuestion()
+comment3.params=dir
+comment3.target=void\ answerQuestion(java.lang.String)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ Main\ method;\ tests\ methods\ \r\n
+numComments=5
