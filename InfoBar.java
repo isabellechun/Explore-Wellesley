@@ -33,9 +33,20 @@ public class InfoBar extends JPanel
 
         //add title
         JLabel t = new JLabel(title, SwingConstants.CENTER); 
-        t.setFont(new Font("Helvetica",Font.PLAIN, 35));
+        t.setFont(new Font("Helvetica",Font.PLAIN, 45));
         t.setForeground(Color.WHITE);
         add(t);
+        
+        try { //if title is a Place vertex
+        WellesleyMap tempMap = new WellesleyMap();
+        String descrip = tempMap.getVertex(title).getDescrip();
+        JLabel descripLabel = new JLabel(descrip, SwingConstants.CENTER); 
+        descripLabel.setFont(new Font("Helvetica",Font.PLAIN, 25));
+        descripLabel.setForeground(Color.WHITE);
+        add(descripLabel); }
+        catch (NullPointerException e) {}
+        
+        
         
         // JLabel connectionsLabel = new JLabel("Connections:", SwingConstants.CENTER);
         // connectionsLabel.setFont(new Font("Helvetica",Font.PLAIN, 25));
@@ -61,7 +72,7 @@ public class InfoBar extends JPanel
         }
         add(buttonsContainer);
         
-        setLayout(new GridLayout(2,0));
+        setLayout(new GridLayout(3,0));
         setPreferredSize(new Dimension(150, 250));
         setBackground(new java.awt.Color(19,63,132));
     }
@@ -100,6 +111,7 @@ public class InfoBar extends JPanel
         titleLabel.setPreferredSize(new Dimension(1000, 500));
         add(titleLabel);
         
+        
         //container for analysis
         JPanel infoContainer = new JPanel();
         add(infoContainer);
@@ -113,11 +125,11 @@ public class InfoBar extends JPanel
         placeContainer.add(places);
         
         placeContainer.setLayout(new GridLayout(0,1));
-        System.out.println(queue);
+        //System.out.println(queue);
         ArrayQueue<Place> placeStore = new ArrayQueue<Place>();
         while(!queue.isEmpty()){
             Place p = queue.dequeue();
-            System.out.println(p);
+            //System.out.println(p);
             JLabel pLabel = new JLabel(p.toString(), SwingConstants.CENTER);
             pLabel.setForeground(Color.WHITE);
             pLabel.setFont(new Font("Helvetica", Font.PLAIN, 25));

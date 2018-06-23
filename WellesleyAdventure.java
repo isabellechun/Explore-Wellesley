@@ -6,10 +6,11 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Write a description of class NavBar here.
+ * Extension to JFrame which defines the navigation bar which is
+ * visible throughout the userinterface of WellesleyAdventure
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Silvia Zeamer
+ * @5-15-2017
  */
 public class WellesleyAdventure extends JFrame
 {
@@ -79,12 +80,12 @@ public class WellesleyAdventure extends JFrame
         update();
         
         //set up the info panel
-       String info = "Choose Explore mode to learn about buildings and fun places on Wellesley’s campus!<br/>" +
-       "Click on buildings listed in the legend at the bottom left corner of the map to learn about them.<br/>"+
-       "You’ll find a fun fact and a list of other places they’re connected to!<br/><br/>"+
-       "Choose quiz mode to take a short quiz that takes you through a day of activities at Wellesley!<br/>"+
-       "Click on your answer to advance to the next question.<br/>"+
-       "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care.<br/>"
+       String info = "Choose Explore mode to learn about buildings and fun places on Wellesley’s campus!" +
+       "Click on buildings listed in the legend at the bottom left corner of the map to learn about them."+
+       "You’ll find a fun fact and a list of other places they’re connected to!"+
+       "Choose quiz mode to take a short quiz that takes you through a day of activities at Wellesley!"+
+       "Click on your answer to advance to the next question."+
+       "Once you’re done, you’ll find out what portion of your day was spent on academics, having fun with friends, and on self-care."
        + "You’ll also get a list of places you visited during your day at Wellesley.";
        
        //set up the choose your own adventure panel

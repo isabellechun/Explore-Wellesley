@@ -1,7 +1,4 @@
 
- 
-
- 
 /**
  * Question class creates Question objects that have a question and left and right Place and questions associated with them
  *

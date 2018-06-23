@@ -226,23 +226,17 @@ public class ChooseYourOwnAdventure
      */
     public void answerQuestion(String dir){
         if(dir == "l"){
-            //System.out.println(currentTree.getLeft().getRootElement());
             currentQ = currentTree.getLeft().getRootElement();
             currentTree = currentTree.getLeft();
             if(!currentQ.isLeaf()){
                 places.enqueue(currentQ.getLeftPlace());
-                System.out.println("Queue: " + places);
-                System.out.println(currentQ.getLeftPlace());
             }
         }
         else if(dir == "r"){
-            //System.out.println(currentTree.getRight().getRootElement());
             currentQ = currentTree.getRight().getRootElement();
             currentTree = currentTree.getRight();
             if(!currentQ.isLeaf()){
                 places.enqueue(currentQ.getRightPlace());
-                System.out.println("Queue: " + places);
-                System.out.println(currentQ.getRightPlace());
             }
         }
         
@@ -260,11 +254,11 @@ public class ChooseYourOwnAdventure
         test.addPlace(map.getVertex("Science Center"));
         test.addPlace(map.getVertex("Lake Waban"));
         
-        System.out.println(q);
-        System.out.println("TESTING containsPlace() method\nIs SCI in the "+
-                            "Queue of Places?\nExpected: true Actual: " +
-                            test.containsPlace(map.getVertex("Science Center")));
+        // System.out.println(q);
+        // System.out.println("TESTING containsPlace() method\nIs SCI in the "+
+                            // "Queue of Places?\nExpected: true Actual: " +
+                            // test.containsPlace(map.getVertex("Science Center")));
         
-        System.out.println(test.getQueue());
+        // System.out.println(test.getQueue());
     }
 }
